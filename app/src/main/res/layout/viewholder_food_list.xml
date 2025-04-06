@@ -16,34 +16,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/high_1" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pic"
+        app:srcCompat="@drawable/time" />
+
+    <TextView
+        android:id="@+id/timeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="20 min"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
     <TextView
         android:id="@+id/titleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Chocolate Cake"
+        android:text="title"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pic" />
-
-    <TextView
-        android:id="@+id/priceTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="3200"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/titleTxt"
-        app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@+id/priceTxt"
-        app:layout_constraintTop_toBottomOf="@+id/priceTxt"
+        app:layout_constraintStart_toStartOf="@+id/titleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/titleTxt"
         app:srcCompat="@drawable/star" />
 
     <TextView
@@ -52,12 +61,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
-        android:text="4.6"
+        android:text="0"
         android:textColor="@color/grey"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

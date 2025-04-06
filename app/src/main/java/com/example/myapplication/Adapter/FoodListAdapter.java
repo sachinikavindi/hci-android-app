@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.example.myapplication.Domain.FoodDomain;
 import com.example.myapplication.R;
 
@@ -34,10 +36,14 @@ Context context;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 holder.titleTxt.setText(items.get(position).getTitle());
-holder.priceTxt.setText(" RS"+items.get(position).getPrice());
+holder.timeTxt.setText(items.get(position).getPrice()+" min");
 holder.ScoreTxt.setText(""+items.get(position).getScore());
 int drawableResourcesId=holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(),"drawable",holder.itemView.getContext().getPackageName());
 
+        Glide.with(holder.itemView.getContext())
+                .load(drawableResourcesId)
+                .transform(new GranularRoundedCorners(30,30,0,0))
+                .into(holder.pic);
     }
 
     @Override
@@ -46,12 +52,12 @@ int drawableResourcesId=holder.itemView.getResources().getIdentifier(items.get(p
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-TextView titleTxt,priceTxt,ScoreTxt;
+TextView titleTxt,timeTxt,ScoreTxt;
 ImageView pic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTxt=itemView.findViewById(R.id.titleTxt);
-            priceTxt=itemView.findViewById(R.id.priceTxt);
+            timeTxt=itemView.findViewById(R.id.titleTxt);
             ScoreTxt=itemView.findViewById(R.id.scoreTxt);
             pic=itemView.findViewById(R.id.pic);
 
