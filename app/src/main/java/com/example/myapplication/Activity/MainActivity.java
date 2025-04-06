@@ -41,7 +41,7 @@ initRecyclerview();
         Items.add(new FoodDomain("Chocolate Cake","" ,"high_1",10,25,200,5));
         Items.add(new FoodDomain("Chocolate Cake","" ,"high_1",13,30,100,4.5));
 
-        recyclerViewFood=findViewById(R.id.view);
+        recyclerViewFood=findViewById(R.id.recyclerViewFood);
         recyclerViewFood.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         adapterFoodList=new FoodListAdapter(Items);

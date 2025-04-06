@@ -72,7 +72,7 @@
                 <EditText
                     android:id="@+id/editTextText5"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:background="@color/white"
@@ -155,7 +155,7 @@
                         android:background="@drawable/category_background">
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageViewcake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -165,15 +165,15 @@
                             app:srcCompat="@drawable/cake_btn" />
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/textViewcake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cake"
                             android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                            app:layout_constraintStart_toStartOf="@+id/imageView4"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                            app:layout_constraintEnd_toEndOf="@+id/imageViewcake"
+                            app:layout_constraintStart_toStartOf="@+id/imageViewcake"
+                            app:layout_constraintTop_toBottomOf="@+id/imageViewcake" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -184,35 +184,8 @@
                         android:layout_weight="0.25"
                         android:background="@drawable/category_background">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:background="@drawable/category_background">
-
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/cake_btn" />
-
-                            <TextView
-                                android:id="@+id/textView10"
-                                android:layout_width="9dp"
-                                android:layout_height="15dp"
-                                android:textColor="@color/black"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                                app:layout_constraintStart_toStartOf="@+id/imageView4"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageViewdonut2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -222,15 +195,15 @@
                             app:srcCompat="@drawable/donut_btn" />
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/textViewdonut2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Donut"
                             android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                            app:layout_constraintStart_toStartOf="@+id/imageView4"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                            app:layout_constraintEnd_toEndOf="@+id/imageViewdonut2"
+                            app:layout_constraintStart_toStartOf="@+id/imageViewdonut2"
+                            app:layout_constraintTop_toBottomOf="@+id/imageViewdonut2" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -242,7 +215,7 @@
                         android:background="@drawable/category_background">
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageViewbcake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -252,15 +225,15 @@
                             app:srcCompat="@drawable/birthdaycake_btn" />
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/textViewbcake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Celebration Cake"
                             android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                            app:layout_constraintStart_toStartOf="@+id/imageView4"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                            app:layout_constraintEnd_toEndOf="@+id/imageViewbcake"
+                            app:layout_constraintStart_toStartOf="@+id/imageViewbcake"
+                            app:layout_constraintTop_toBottomOf="@+id/imageViewbcake" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,7 +245,7 @@
                         android:background="@drawable/category_background">
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageViewbecake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -282,15 +255,15 @@
                             app:srcCompat="@drawable/bentoc_btn" />
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/textViewbecake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Bento Cake"
                             android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                            app:layout_constraintStart_toStartOf="@+id/imageView4"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                            app:layout_constraintEnd_toEndOf="@+id/imageViewbecake"
+                            app:layout_constraintStart_toStartOf="@+id/imageViewbecake"
+                            app:layout_constraintTop_toBottomOf="@+id/imageViewbecake" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
@@ -328,7 +301,7 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@id/view"
+                android:id="@+id/recyclerViewFood"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
@@ -361,7 +334,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewhome"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
@@ -370,7 +343,7 @@
                         app:srcCompat="@drawable/bottom_btn1" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewhome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Home"
@@ -385,7 +358,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewcart"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
@@ -394,7 +367,7 @@
                         app:srcCompat="@drawable/bottom_btn2" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewcart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cart"
@@ -409,7 +382,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewsupport"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
@@ -418,7 +391,7 @@
                         app:srcCompat="@drawable/bottom_btn3" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewsupport"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Support"
@@ -433,7 +406,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewsetting"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
@@ -442,7 +415,7 @@
                         app:srcCompat="@drawable/bottom_btn4" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewsetting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Settings"
