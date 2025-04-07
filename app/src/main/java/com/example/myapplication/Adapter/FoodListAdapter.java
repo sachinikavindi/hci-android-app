@@ -57,7 +57,7 @@ ImageView pic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTxt=itemView.findViewById(R.id.titleTxt);
-            timeTxt=itemView.findViewById(R.id.titleTxt);
+            timeTxt=itemView.findViewById(R.id.timeTxt);
             ScoreTxt=itemView.findViewById(R.id.scoreTxt);
             pic=itemView.findViewById(R.id.pic);
 
