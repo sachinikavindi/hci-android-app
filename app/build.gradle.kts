@@ -40,7 +40,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.github.bumptech.glide:glide:4.12.0" )
-    implementation ("com.google.andriod.meterial:meterial:1.4.0-rc01")
-    implementation ("com.google.code.gson:gson:2.8.7")
+implementation("com.github.bumptech.glide:glide:4.12.0" )
+
 }

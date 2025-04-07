@@ -18,8 +18,17 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 
 public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHolder> {
-ArrayList<FoodDomain>    items;
-Context context;
+    ArrayList<FoodDomain> items;
+    Context context;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public FoodListAdapter(ArrayList<FoodDomain> items) {
         this.items = items;
@@ -28,22 +37,35 @@ Context context;
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View inflate= LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_food_list,parent,false);
-            context=parent.getContext();
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_food_list, parent, false);
+        context = parent.getContext();
         return new ViewHolder(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-holder.titleTxt.setText(items.get(position).getTitle());
-holder.timeTxt.setText(items.get(position).getPrice()+" min");
-holder.ScoreTxt.setText(""+items.get(position).getScore());
-int drawableResourcesId=holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(),"drawable",holder.itemView.getContext().getPackageName());
+        holder.titleTxt.setText(items.get(position).getTitle());
+        holder.timeTxt.setText(items.get(position).getPrice() + " min");
+        holder.ScoreTxt.setText("" + items.get(position).getScore());
+        int drawableResourcesId = holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(), "drawable", holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext())
                 .load(drawableResourcesId)
-                .transform(new GranularRoundedCorners(30,30,0,0))
+                .transform(new GranularRoundedCorners(30, 30, 0, 0))
                 .into(holder.pic);
+                
+        // Set up item click listener for the entire view
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    int adapterPosition = holder.getAdapterPosition();
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(adapterPosition);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -51,17 +73,16 @@ int drawableResourcesId=holder.itemView.getResources().getIdentifier(items.get(p
         return items.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-TextView titleTxt,timeTxt,ScoreTxt;
-ImageView pic;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView titleTxt, timeTxt, ScoreTxt;
+        ImageView pic;
+        
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleTxt=itemView.findViewById(R.id.titleTxt);
-            timeTxt=itemView.findViewById(R.id.titleTxt);
-            ScoreTxt=itemView.findViewById(R.id.scoreTxt);
-            pic=itemView.findViewById(R.id.pic);
-
-
+            titleTxt = itemView.findViewById(R.id.titleTxt);
+            timeTxt = itemView.findViewById(R.id.timeTxt);
+            ScoreTxt = itemView.findViewById(R.id.scoreTxt);
+            pic = itemView.findViewById(R.id.pic);
         }
     }
 }
