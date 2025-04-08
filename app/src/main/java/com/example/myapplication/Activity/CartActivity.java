@@ -1,10 +1,13 @@
 package com.example.myapplication.Activity;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,10 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Adapter.CartAdapter;
 import com.example.myapplication.Domain.FoodDomain;
 import com.example.myapplication.R;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity implements PaymentResultListener {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCart;
     private ImageView backBtn;
@@ -24,6 +31,8 @@ public class CartActivity extends AppCompatActivity {
     private ArrayList<FoodDomain> cartItems;
     private double tax = 0.02; // 2% tax
     private double deliveryFee = 150; // Fixed delivery fee
+    private Button payButton;
+    private double totalAmount = 0.0; // Initialize this with your cart total
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,18 @@ public class CartActivity extends AppCompatActivity {
         
         // Set up RecyclerView
         setupRecyclerView();
+
+        // Initialize Razorpay
+        Checkout.preload(getApplicationContext());
+
+        // Initialize the pay button
+        payButton = findViewById(R.id.button2);
+
+        // Calculate total amount from cart items
+        calculateTotalAmount();
+
+        // Set up payment button click listener
+        payButton.setOnClickListener(v -> startPayment());
     }
 
     private void initViews() {
@@ -134,5 +155,63 @@ public class CartActivity extends AppCompatActivity {
         deliveryTxt.setText("Rs." + String.format("%.2f", deliveryFee));
         taxTxt.setText("Rs." + String.format("%.2f", taxAmount));
         totalTxt.setText("Rs." + String.format("%.2f", total));
+    }
+
+    private void calculateTotalAmount() {
+        // Get your cart total here
+        // Example: totalAmount = cartItems.stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();
+        // Add tax and delivery fee
+        double tax = totalAmount * 0.02; // 2% tax
+        double deliveryFee = 150; // Fixed delivery fee
+        totalAmount = totalAmount + tax + deliveryFee;
+    }
+
+    private void startPayment() {
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("YOUR_RAZORPAY_KEY_ID"); // Replace with your Razorpay key
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", "Food App");
+            options.put("description", "Order Payment");
+            options.put("currency", "INR");
+            options.put("amount", (int)(totalAmount * 100)); // Amount in smallest currency unit (paise)
+            
+            // Prefill customer details
+            JSONObject prefill = new JSONObject();
+            prefill.put("email", "customer@example.com");
+            prefill.put("contact", "9876543210");
+            options.put("prefill", prefill);
+            
+            checkout.open(this, options);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID) {
+        try {
+            // Payment successful
+            Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+            
+            // TODO: Update order status in your database
+            // TODO: Clear cart
+            // TODO: Navigate to order confirmation screen
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onPaymentError(int code, String response) {
+        try {
+            Toast.makeText(this, "Payment Failed: " + response, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 } 

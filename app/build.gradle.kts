@@ -40,6 +40,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-implementation("com.github.bumptech.glide:glide:4.12.0" )
+    implementation("com.github.bumptech.glide:glide:4.12.0" )
+    implementation("com.razorpay:checkout:1.6.33")
 
 }

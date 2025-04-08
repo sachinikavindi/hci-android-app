@@ -48,7 +48,7 @@ public class sing_in extends AppCompatActivity {
 
     private void initializeViews() {
         editTextName = findViewById(R.id.editTextTextname);
-        editTextEmail = findViewById(R.id.editTextTextemail);
+        editTextEmail = findViewById(R.id.editTextTextEmail);
         editTextLocation = findViewById(R.id.editTextTextlocation);
         editTextPassword = findViewById(R.id.editTextTextpassword);
         signInButton = findViewById(R.id.button);
