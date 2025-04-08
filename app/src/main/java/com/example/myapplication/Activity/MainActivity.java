@@ -40,20 +40,20 @@ private ArrayList<FoodDomain> foodItems;
         // Initialize views
         initViews();
         
-        // Get the user address from the intent
-        String userAddress = getIntent().getStringExtra("USER_ADDRESS");
-        
-        // Set the user address in the TextView if it's not null
-        if (userAddress != null && !userAddress.isEmpty()) {
-            addressTextView.setText(userAddress);
-        }
-        
-        // Initialize RecyclerView with food items
-        initRecyclerview();
-        
-        // Set up click listeners for navigation buttons
-        setupNavigation();
-    }
+//        // Get the user address from the intent
+//        String userAddress = getIntent().getStringExtra("USER_ADDRESS");
+//
+//        // Set the user address in the TextView if it's not null
+//        if (userAddress != null && !userAddress.isEmpty()) {
+//            addressTextView.setText(userAddress);
+//        }
+//
+//        // Initialize RecyclerView with food items
+//        initRecyclerview();
+//
+//        // Set up click listeners for navigation buttons
+//        setupNavigation();
+//    }
 
     private void initViews() {
         recyclerViewFood = findViewById(R.id.recyclerViewFood);
