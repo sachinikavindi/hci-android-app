@@ -315,16 +315,17 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/button2"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                style="@style/textStyleBold."
-                android:background="@drawable/green_button_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Order Now"
-                android:textSize="20sp"/>
+                android:text="Pay Now"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </LinearLayout>
     </ScrollView>

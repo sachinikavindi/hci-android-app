@@ -270,6 +270,12 @@
 
             </LinearLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -299,12 +305,6 @@
                     android:textAlignment="viewEnd"
                     android:textColor="@android:color/holo_orange_dark" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

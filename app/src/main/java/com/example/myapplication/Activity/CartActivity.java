@@ -1,6 +1,8 @@
 package com.example.myapplication.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Adapter.CartAdapter;
 import com.example.myapplication.Domain.FoodDomain;
 import com.example.myapplication.R;
-import com.razorpay.Checkout;
-import com.razorpay.PaymentResultListener;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class CartActivity extends AppCompatActivity implements PaymentResultListener {
+public class CartActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCart;
     private ImageView backBtn;
@@ -48,9 +47,6 @@ public class CartActivity extends AppCompatActivity implements PaymentResultList
         // Set up RecyclerView
         setupRecyclerView();
 
-        // Initialize Razorpay
-        Checkout.preload(getApplicationContext());
-
         // Initialize the pay button
         payButton = findViewById(R.id.button2);
 
@@ -58,7 +54,7 @@ public class CartActivity extends AppCompatActivity implements PaymentResultList
         calculateTotalAmount();
 
         // Set up payment button click listener
-        payButton.setOnClickListener(v -> startPayment());
+        payButton.setOnClickListener(v -> initiatePayHerePayment());
     }
 
     private void initViews() {
@@ -166,52 +162,59 @@ public class CartActivity extends AppCompatActivity implements PaymentResultList
         totalAmount = totalAmount + tax + deliveryFee;
     }
 
-    private void startPayment() {
-        Checkout checkout = new Checkout();
-        checkout.setKeyID("YOUR_RAZORPAY_KEY_ID"); // Replace with your Razorpay key
+    private void initiatePayHerePayment() {
+        // Generate a unique order ID
+        String orderId = "ORDER_" + UUID.randomUUID().toString().substring(0, 8);
+        
+        // Create PayHere payment URL with parameters
+        Uri.Builder builder = Uri.parse("https://www.payhere.lk/pay/checkout").buildUpon();
+        builder.appendQueryParameter("merchant_id", "YOUR_MERCHANT_ID")
+               .appendQueryParameter("return_url", "https://yourapp.com/return")
+               .appendQueryParameter("cancel_url", "https://yourapp.com/cancel")
+               .appendQueryParameter("notify_url", "https://yourapp.com/notify")
+               .appendQueryParameter("order_id", orderId)
+               .appendQueryParameter("items", "Food Order")
+               .appendQueryParameter("currency", "LKR")
+               .appendQueryParameter("amount", String.valueOf(totalAmount))
+               .appendQueryParameter("first_name", "Customer Name")
+               .appendQueryParameter("email", "customer@email.com")
+               .appendQueryParameter("phone", "0771234567")
+               .appendQueryParameter("address", "Delivery Address")
+               .appendQueryParameter("city", "Colombo")
+               .appendQueryParameter("country", "Sri Lanka");
+
+        String paymentUrl = builder.build().toString();
 
         try {
-            JSONObject options = new JSONObject();
-            options.put("name", "Food App");
-            options.put("description", "Order Payment");
-            options.put("currency", "INR");
-            options.put("amount", (int)(totalAmount * 100)); // Amount in smallest currency unit (paise)
+            // Open PayHere payment page in browser
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(paymentUrl));
+            startActivity(intent);
             
-            // Prefill customer details
-            JSONObject prefill = new JSONObject();
-            prefill.put("email", "customer@example.com");
-            prefill.put("contact", "9876543210");
-            options.put("prefill", prefill);
+            // Save order details locally
+            saveOrderDetails(orderId);
             
-            checkout.open(this, options);
-
         } catch (Exception e) {
-            Toast.makeText(this, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error opening payment page", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void onPaymentSuccess(String razorpayPaymentID) {
-        try {
-            // Payment successful
-            Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
-            
-            // TODO: Update order status in your database
-            // TODO: Clear cart
-            // TODO: Navigate to order confirmation screen
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void saveOrderDetails(String orderId) {
+        // TODO: Save order details to local storage or your backend
+        // This should include:
+        // - Order ID
+        // - Cart items
+        // - Total amount
+        // - Customer details
+        // - Order status (pending payment)
     }
 
     @Override
-    public void onPaymentError(int code, String response) {
-        try {
-            Toast.makeText(this, "Payment Failed: " + response, Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    protected void onResume() {
+        super.onResume();
+        // Check for payment status when returning from payment page
+        // You might want to implement a way to check if payment was successful
+        // This could be through your return_url handling or backend notification
     }
 } 
