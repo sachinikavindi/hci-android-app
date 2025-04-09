@@ -91,7 +91,6 @@
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delivery"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="35dp" />
 
@@ -102,7 +101,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="272dp"
                     android:layout_marginTop="8dp"
-                    android:text="Rs."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintStart_toStartOf="@+id/textView16"
@@ -113,8 +111,6 @@
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Total Tax"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="72dp" />
 
@@ -124,7 +120,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
-                    android:text="Rs."
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="72dp" />
 
@@ -278,7 +273,6 @@
                     android:id="@+id/textView24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Telephone Number"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="114dp" />
 
@@ -286,7 +280,6 @@
                     android:id="@+id/imageView12"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    app:srcCompat="@android:drawable/sym_action_call"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="141dp" />
 
@@ -297,7 +290,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="+94 70 102 1022"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView12"
                     app:layout_constraintStart_toEndOf="@+id/imageView12"
                     app:layout_constraintTop_toBottomOf="@+id/textView24"
